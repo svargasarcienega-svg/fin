@@ -412,27 +412,115 @@ h2, h3 {
 }
 
 .toast-message.warn {
-  background: rgba(245, 158, 11, 0.2);
+background: rgba(245, 158, 11, 0.2);
   color: #fbbf24;
   border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 /* Responsive */
-@media (max-width: 480px) {
+/* Tablets and Large Phones */
+@media (max-width: 768px) {
   .container {
+    max-width: 100%;
+    margin: 1rem auto;
+  }
+  
+  header {
     padding: 1rem;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+  :root {
+    --radius: 12px;
+  }
+
+  body {
+    font-size: 14px; /* Slightly smaller base font */
+  }
+
+  header {
+    padding: 0.8rem 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .container {
+    padding: 0.8rem;
+    margin: 0;
+    width: 100%;
+    gap: 1rem;
   }
   
   .card {
-    padding: 1.5rem;
+    padding: 1.2rem;
+    border-radius: 12px;
   }
   
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.2rem; }
+
+  /* Inputs and Buttons - Touch Friendly */
+  input, button, .btn {
+    min-height: 48px; /* Minimum touch target size */
+    font-size: 1rem;
+  }
+
+  .input-group {
+    margin-bottom: 1.2rem;
+  }
+
+  /* Game Board Adjustments */
   .board-grid {
     gap: 8px;
+    max-width: 100%; /* Full width on mobile */
+    aspect-ratio: 1; /* Keep it square */
   }
   
   .celda {
     font-size: 2.5rem;
     border-radius: 8px;
+  }
+
+  .players-info {
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .player .avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+
+  .game-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .turn-indicator {
+    align-self: flex-start;
+  }
+}
+
+/* Small Mobile Devices (e.g. iPhone SE, Foldable outer screens) */
+@media (max-width: 360px) {
+  .celda {
+    font-size: 2rem;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    font-size: 1.1rem;
   }
 }
