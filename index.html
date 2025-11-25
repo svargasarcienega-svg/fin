@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe Ultimate</title>
+  <script type="module" src="index.js" defer></script>
+  <link rel="stylesheet" href="estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="background-animation"></div>
+
+  <header>
+    <div class="logo">❌⭕ Tic-Tac-Toe</div>
+    <div class="user-status">
+      <span id="estadoAuth">desconectado</span>
+      <button type="button" id="btnLogout" disabled class="btn-icon" title="Cerrar Sesión">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="mensaje" aria-live="polite" class="toast-message"></div>
+
+    <!-- AUTH SECTION -->
+    <section class="card auth-card">
+      <form id="authForm">
+        <h2>Bienvenido</h2>
+        <p class="subtitle">Ingresa para jugar</p>
+
+        <div class="input-group">
+          <input type="email" id="email" name="email" placeholder=" " required>
+          <label for="email">Correo Electrónico</label>
+        </div>
+
+        <div class="input-group">
+          <input type="password" id="password" name="password" placeholder=" " required>
+          <label for="password">Contraseña</label>
+        </div>
+
+        <div class="auth-buttons">
+          <button type="button" id="btnLogin" class="btn btn-primary">Iniciar Sesión</button>
+          <button type="button" id="btnRegister" class="btn btn-secondary">Registrarse</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- GAME MANAGEMENT SECTION -->
+    <section id="gestionPartidas" class="card game-controls">
+      <h3>Sala de Juego</h3>
+      <div class="controls-grid">
+        <button id="btnCrearPartida" disabled class="btn btn-accent btn-large">
+          <span class="icon">➕</span> Crear Nueva Partida
+        </button>
+
+        <div class="join-game">
+          <div class="input-group compact">
+            <input type="text" id="codigoPartida" name="codigoPartida" placeholder=" ">
+            <label for="codigoPartida">ID de Partida</label>
+          </div>
+          <div class="join-buttons">
+            <button id="btnUnirsePartida" disabled class="btn btn-outline">Unirse</button>
+            <button id="btnVerPartida" class="btn btn-ghost" title="Ver Partida">👁️</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME BOARD SECTION -->
+    <section id="panelPartida" class="card game-board-section" style="display: none;">
+      <div class="game-header">
+        <div class="game-info">
+          <div class="info-item">
+            <span class="label">ID Partida</span>
+            <span id="pid" class="value monospace">...</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Estado</span>
+            <span id="pestado" class="value badge">...</span>
+          </div>
+        </div>
+        <div class="turn-indicator">
+          Turno: <span id="pturno" class="turn-badge">...</span>
+        </div>
+      </div>
+
+      <div class="players-info">
+        <div class="player p-x">
+          <span class="avatar">X</span>
+          <span id="px" class="player-name">...</span>
+        </div>
+        <div class="vs">VS</div>
+        <div class="player p-o">
+          <span class="avatar">O</span>
+          <span id="po" class="player-name">...</span>
+        </div>
+      </div>
+
+      <div id="tablero" class="board-grid"></div>
+
+      <div class="game-footer">
+        <div class="winner-banner">
+          Ganador: <span id="pganador" class="winner-name">—</span>
+        </div>
+        <div class="action-buttons">
+          <button id="btnReiniciar" class="btn btn-restart">🔄 Jugar de Nuevo</button>
+          <button id="btnAceptarReinicio" class="btn btn-success">✅ Aceptar Revancha</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
